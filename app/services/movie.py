@@ -19,7 +19,7 @@ class MovieService:
 
     def update(self, data):
         mid = data.get("mid")
-        movie = self.get_one(mid)
+        movie = self.dao.get_one(mid)
 
         movie.title = data.get("title")
         movie.description = data.get("description")
