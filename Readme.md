@@ -1,5 +1,5 @@
 # My mini API
-## Descriptions
+## Description
 This API is my homework. I made it using Flask, flask-restx, flask-sqlalchemy and Marshmallow.
 ## Running in IDE
 For clone repository:
@@ -17,5 +17,4 @@ For install dependencies:
 For running:
 
 `python main.py`
-
 ## Running in Docker
