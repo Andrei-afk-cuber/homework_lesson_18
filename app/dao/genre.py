@@ -10,7 +10,7 @@ class GenreDAO:
         self.session = session
 
     # метод получения всех фильмов
-    def get_all(self, query):
+    def get_all(self):
         return self.session.query(Genre)
 
     # Метод получения одного фильма
