@@ -15,4 +15,4 @@ genre_dao = GenreDAO(db.session)
 genre_service = GenreService(genre_dao)
 
 director_dao = DirectorDAO(db.session)
-director_dao = DirectorService(director_dao)
+director_service = DirectorService(director_dao)

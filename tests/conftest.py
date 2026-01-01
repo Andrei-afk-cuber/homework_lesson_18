@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import Mock, MagicMock
+from unittest.mock import MagicMock
 
 from app.dao.director import DirectorDAO
 from app.dao.genre import GenreDAO
@@ -47,15 +47,15 @@ def movie_dao():
 
 # fixture for get director service
 @pytest.fixture
-def director_service():
+def director_service(director_dao):
     return DirectorService(director_dao)
 
 # fixture for get genre service
 @pytest.fixture
-def genre_service():
+def genre_service(genre_dao):
     return GenreService(genre_dao)
 
 # fixture for get movie service
 @pytest.fixture
-def movie_service():
+def movie_service(movie_dao):
     return MovieService(movie_dao)
