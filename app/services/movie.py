@@ -7,7 +7,7 @@ class MovieService:
     def __init__(self, movie_dao):
         self.dao = movie_dao
 
-    def get_all(self, data):
+    def get_all(self, data=None):
         return movies_schema.dump(self.dao.get_all(data))
 
     def get_one(self, mid):

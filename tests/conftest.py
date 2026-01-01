@@ -39,10 +39,9 @@ def movie_dao():
             Movie(id=2),
         ]
     )
-    dao.get_one = MagicMock(return_value=Movie(id=1, name="Movie 1"))
-    dao.create = MagicMock(return_value=Movie(id=3))
+    dao.get_one = MagicMock(return_value=Movie(id=1, title="Movie 1"))
     dao.update = MagicMock()
-    dao.delete = MagicMock()
+    dao.delete = MagicMock(return_value="Obj was deleted")
     return dao
 
 # fixture for get director service
@@ -58,4 +57,5 @@ def genre_service(genre_dao):
 # fixture for get movie service
 @pytest.fixture
 def movie_service(movie_dao):
-    return MovieService(movie_dao)
+    service = MovieService(movie_dao)
+    return service
