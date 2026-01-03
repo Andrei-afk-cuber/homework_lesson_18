@@ -2,6 +2,7 @@ from flask_restx import Namespace, Resource
 
 from app.container import director_service
 
+# creating namespace for api
 directors_ns = Namespace('directors')
 
 # All director class
@@ -15,5 +16,5 @@ class DirectorsView(Resource):
 @directors_ns.route('/<int:did>')
 class DirectorView(Resource):
     # Get director by id
-    def get(self, did):
+    def get(self, did: int):
         return director_service.get_one(did)

@@ -1,20 +1,22 @@
+from typing import Optional, List, Union, Dict
+
 from app.setup_db import db
 from app.dao.models.genres_model import Genre, GenreSchema
 
 genre_schema = GenreSchema()
 genres_schema = GenreSchema(many=True)
 
-# DAO получения фильмов
+# DAO for genres
 class GenreDAO:
-    def __init__(self, session: db.session):
+    def __init__(self, session: db.session) -> None:
         self.session = session
 
-    # метод получения всех фильмов
-    def get_all(self):
+    # method for getting all genres
+    def get_all(self) -> Optional[List[Genre]]:
         return self.session.query(Genre)
 
-    # Метод получения одного фильма
-    def get_one(self, gid):
+    # method for getting genre by id
+    def get_one(self, gid: int) -> Union[str, Dict[str, str]]:
         try:
             genre = self.session.query(Genre).filter(Genre.id == gid).one()
 

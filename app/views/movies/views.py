@@ -2,8 +2,8 @@ from flask_restx import Namespace, Resource
 from flask import request
 
 from app.container import movie_service
-from app.dao.models.movies_model import Movie
 
+# creating namespace for api
 movies_ns = Namespace('movies')
 
 # Class for processing a lot of movies

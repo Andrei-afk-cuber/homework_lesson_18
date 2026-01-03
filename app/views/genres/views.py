@@ -2,6 +2,7 @@ from flask_restx import Namespace, Resource
 
 from app.container import genre_service
 
+# creating namespace for api
 genres_ns = Namespace('genres')
 
 # All genres class
@@ -15,5 +16,5 @@ class GenresView(Resource):
 @genres_ns.route('/<int:gid>')
 class GenreView(Resource):
     # Get genre bu id
-    def get(self, gid):
+    def get(self, gid: int):
         return genre_service.get_one(gid)

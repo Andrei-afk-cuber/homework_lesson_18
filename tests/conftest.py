@@ -1,14 +1,17 @@
 import pytest
 from unittest.mock import MagicMock
 
+# import DAO
 from app.dao.director import DirectorDAO
 from app.dao.genre import GenreDAO
 from app.dao.movie import MovieDAO
 
+# import ORM models
 from app.dao.models.directors_model import Director
 from app.dao.models.genres_model import Genre
 from app.dao.models.movies_model import Movie
 
+# import services
 from app.services.director import DirectorService
 from app.services.genre import GenreService
 from app.services.movie import MovieService

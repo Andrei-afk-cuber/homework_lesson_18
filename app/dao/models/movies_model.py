@@ -6,6 +6,7 @@ from app.setup_db import db
 from app.dao.models.genres_model import GenreSchema
 from app.dao.models.directors_model import DirectorSchema
 
+# model for movie
 class Movie(db.Model):
     __tablename__ = 'movies'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -19,6 +20,7 @@ class Movie(db.Model):
     director_id = db.Column(db.Integer, ForeignKey("directors.id"))
     director = relationship("Director")
 
+# schema for movie
 class MovieSchema(Schema):
     id = fields.Integer()
     title = fields.String()

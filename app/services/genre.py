@@ -1,16 +1,19 @@
-from app.dao.models.genres_model import GenreSchema
+from typing import Optional, List, Union, Tuple, Dict
+
+from app.dao.models.genres_model import GenreSchema, Genre
 
 genre_schema = GenreSchema()
 genres_schema = GenreSchema(many=True)
 
+# class for genre
 class GenreService:
-    def __init__(self, movie_dao):
+    def __init__(self, movie_dao) -> None:
         self.dao = movie_dao
 
-    def get_all(self):
+    def get_all(self) -> Optional[List[Genre]]:
         return genres_schema.dump(self.dao.get_all())
 
-    def get_one(self, mid):
+    def get_one(self, mid: int) -> Union[Dict[str, str], Tuple[str, int]]:
         try:
             genre = self.dao.get_one(mid)
 

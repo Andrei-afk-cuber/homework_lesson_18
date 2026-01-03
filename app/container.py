@@ -1,10 +1,12 @@
-# Контейнер для создания объектов
+# container for objects creating
 from app.setup_db import db
 
 from app.dao.movie import MovieDAO
 from app.services.movie import MovieService
+
 from app.dao.director import DirectorDAO
 from app.services.director import DirectorService
+
 from app.dao.genre import GenreDAO
 from app.services.genre import GenreService
 

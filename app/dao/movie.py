@@ -1,3 +1,5 @@
+from typing import List, Optional, Union, Dict
+
 from app.setup_db import db
 from app.dao.models.movies_model import Movie
 
@@ -7,7 +9,7 @@ class MovieDAO:
         self.session = session
 
     # Method for getting all movies
-    def get_all(self, query):
+    def get_all(self, query: dict) ->Optional[List[Movie]]:
         director_id = query.get("director_id")
         genre_id = query.get("genre_id")
         year = query.get("year")
@@ -24,7 +26,7 @@ class MovieDAO:
         return movies.all()
 
     # Method for getting one movie
-    def get_one(self, mid):
+    def get_one(self, mid: int) -> Union[str, Dict[str, str]]:
         try:
             movie = self.session.query(Movie).filter(Movie.id == mid).one()
 
@@ -33,17 +35,18 @@ class MovieDAO:
             return str(e)
 
     # Method for create movie
-    def create(self, movie):
+    def create(self, movie: Movie) -> None:
         with self.session.begin():
             self.session.add(movie)
+            self.session.commit()
 
     # Method for update movie data
-    def update(self, movie):
+    def update(self, movie: Movie) -> None:
         self.session.add(movie)
         self.session.commit()
 
     # Method for deleting movie
-    def delete(self, movie):
+    def delete(self, movie: Movie) -> Optional[str]:
         try:
             self.session.delete(movie)
             self.session.commit()
