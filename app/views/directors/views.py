@@ -16,7 +16,4 @@ class DirectorsView(Resource):
 class DirectorView(Resource):
     # Get director by id
     def get(self, did):
-        try:
-            return director_service.get(did)
-        except Exception as e:
-            return str(e), 400
+        return director_service.get_one(did)

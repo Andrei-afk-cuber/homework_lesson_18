@@ -10,5 +10,13 @@ class DirectorService:
     def get_all(self):
         return directors_schema.dump(self.dao.get_all())
 
-    def get_one(self, mid):
-        return director_schema.dump(self.dao.get_one(mid))
+    def get_one(self, did):
+        try:
+            director = self.dao.get_one(did)
+
+            if type(director) == str:
+                raise Exception('Director not found')
+
+            return director_schema.dump(director)
+        except Exception as e:
+            return str(e), 404

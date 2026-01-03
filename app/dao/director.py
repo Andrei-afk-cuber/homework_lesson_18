@@ -1,6 +1,7 @@
 from app.setup_db import db
 from app.dao.models.directors_model import Director
-# DAO получения директоров
+
+# DAO for directors
 class DirectorDAO:
     def __init__(self, session: db.session):
         self.session = session
@@ -12,8 +13,8 @@ class DirectorDAO:
     # Метод получения одного фильма
     def get_one(self, did):
         try:
-            genre = self.session.query(Director).filter(Director.id == did).one()
+            director = self.session.query(Director).filter(Director.id == did).one()
 
-            return genre
+            return director
         except Exception as e:
             return str(e)
